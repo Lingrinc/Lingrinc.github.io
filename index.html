@@ -2,9 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>视频播放</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        .video-container {
+            width: 100%;
+            max-width: 800px; /* 在大屏幕上限制最大宽度 */
+            margin: 0 auto;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            outline: none;
+        }
+        
+        /* 横屏适配 */
+        @media screen and (orientation: landscape) {
+            .video-container {
+                max-height: 90vh;
+            }
+            
+            video {
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+        
+        /* 小屏幕设备适配 */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <a href="[2409:8a60:786a:fb70:19e6:b122:3880:2e9d]">点击</a>
+    <div class="video-container">
+        <video src="./lcy.mp4" controls playsinline webkit-playsinline></video>
+    </div>
+    
+    <script>
+        // 可选：检测移动设备并添加特定处理
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        
+        if (isMobile()) {
+            // 可以在这里添加移动设备特定的逻辑
+            console.log("移动设备检测");
+        }
+    </script>
 </body>
 </html>
